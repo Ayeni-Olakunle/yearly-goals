@@ -3,14 +3,14 @@ import logo from "@/public/E 1.png";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 
-export default function Login() {
+export default function Signup() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-[#407BFF]">
       <div className="w-[400px] bg-[white] [box-shadow:0px_7px_10px_6px_#00000033] rounded-[10px] overflow-hidden">
         <div className="flex justify-center items-center mx-[0] my-[20px] flex-col">
           <img src={logo.src} alt="Not Available" className="w-[100px]" />
           <h1 className="font-[Inter] font-bold text-left text-[#407bff] mt-[5px] mb-[5px] text-[25px]">
-            Login
+            Sign up
           </h1>
         </div>
 
@@ -44,7 +44,7 @@ export default function Login() {
             />
           </div>
           <p className="font-[Inter] text-lg font-normal leading-[21.78px] text-[#407afd] text-right flex justify-between items-center mb-[10px] text-[13px]">
-            <Link href="/signup">Create an Account</Link>
+            <Link href="">Create an Account</Link>
             <Link href="">Forget Password ?</Link>
           </p>
           <button
