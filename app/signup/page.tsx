@@ -26,7 +26,7 @@ export default function Page() {
               type="text"
               name="FirstName"
               id="FirstName"
-              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0]"
+              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
               required
             />
           </div>
@@ -42,7 +42,7 @@ export default function Page() {
               type="text"
               name="LastName"
               id="LastName"
-              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0]"
+              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
               required
             />
           </div>
@@ -58,7 +58,7 @@ export default function Page() {
               type="email"
               name="EmailAddress"
               id="EmailAddress"
-              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0]"
+              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
               required
             />
           </div>
@@ -74,7 +74,7 @@ export default function Page() {
               type="password"
               name="password"
               id="password"
-              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0]"
+              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
               required
             />
           </div>
@@ -90,7 +90,7 @@ export default function Page() {
               type="password"
               name="password"
               id="password"
-              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0]"
+              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
               required
             />
           </div>
@@ -106,7 +106,7 @@ export default function Page() {
               type="password"
               name="confirmPassword"
               id="confirmPassword"
-              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0]"
+              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
               required
             />
           </div>

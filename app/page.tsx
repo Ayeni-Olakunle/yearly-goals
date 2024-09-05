@@ -26,7 +26,7 @@ export default function Login() {
               type="email"
               name="EmailAddress"
               id="EmailAddress"
-              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0]"
+              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
             />
           </div>
           <div className="flex justify-start items-start flex-col mb-[10px]">
@@ -40,7 +40,7 @@ export default function Login() {
               type="password"
               name="password"
               id="password"
-              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0]"
+              className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
             />
           </div>
           <p className="font-[Inter] text-lg font-normal leading-[21.78px] text-[#407afd] text-right flex justify-between items-center mb-[10px] text-[13px]">
