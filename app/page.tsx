@@ -53,7 +53,7 @@ export default function Login() {
           </p>
           <button
             type="submit"
-            className="w-full font-[Inter] text-[17px] font-medium leading-[26.63px] bg-[#407bff] mt-[10px] p-[10px] rounded-[5px] mb-[10px]"
+            className="w-full font-[Inter] text-[17px] font-medium leading-[26.63px] bg-[#407bff] mt-[10px] p-[10px] rounded-[5px] mb-[10px] text-[white]"
           >
             Submit
           </button>

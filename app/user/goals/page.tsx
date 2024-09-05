@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <main>
-      <div>Dashboard Page</div>
+      <div>Goals Page</div>
     </main>
   );
 }
