@@ -75,7 +75,7 @@ export default function Navbar() {
         <img
           src={Logo.src}
           alt="Not Available"
-          className="h-[80px] rounded-[10px]"
+          className="h-[60px] rounded-[10px]"
         />
         <span className="font-[Inter] text-[25px] font-bold leading-[30.26px] text-left text-[#FFFFFF]">
           Emmy
