@@ -39,7 +39,7 @@ export default function Navbar() {
       id: "3",
       name: "All Tasks",
       icon: <FaTasks />,
-      link: "/user/all-task",
+      link: "/user/all-tasks",
     },
     {
       id: "4",
