@@ -3,8 +3,17 @@ import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
 import axios from "axios";
 
+interface ChartType {
+  getContext: any;
+  chart: any;
+}
+
+interface dataItem {
+  weight: string;
+}
+
 export default function TaskChart() {
-  const chartRef = useRef(null);
+  const chartRef = useRef<ChartType | null>(null);
   const [chartData, setChartData] = useState([]);
 
   useEffect(() => {
@@ -14,7 +23,6 @@ export default function TaskChart() {
         console.error("Bad response");
       }
       const data = response.data;
-      // console.log(data);
       const firstSix = data.users.splice(0, 5);
       setChartData(firstSix);
     };
@@ -30,9 +38,8 @@ export default function TaskChart() {
 
       const context = chartRef.current.getContext("2d");
 
-      //   const label = chartData.map((items) => items.firstName);
       const label = ["Completed", "In Progress", "Pending", "Close Tasks"];
-      const data = chartData.map((items) => items.weight);
+      const data = chartData.map((items: dataItem) => items.weight);
 
       const newChart = new Chart(context, {
         type: "bar",
@@ -94,7 +101,7 @@ export default function TaskChart() {
   return (
     <section>
       <div className="relative w-full h-[450px]">
-        <canvas ref={chartRef} className="!h-full !w-full" />
+        <canvas ref={chartRef as any} className="!h-full !w-full" />
       </div>
     </section>
   );
