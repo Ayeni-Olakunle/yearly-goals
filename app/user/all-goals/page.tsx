@@ -1,7 +1,11 @@
+"use client";
+import React from "react";
+import AllGoals from "@/components/AllGoals/allGoals";
+
 export default function Page() {
   return (
-    <main>
-      <div>Goals Page</div>
+    <main className="p-[30px]">
+      <AllGoals />
     </main>
   );
 }

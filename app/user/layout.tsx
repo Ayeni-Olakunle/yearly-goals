@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="flex justify-start items-start h-screen overflow-hidden bg-[white]">
           <Navbar />
-          <main className="w-full h-full">
+          <main className="w-full overflow-y-scroll h-screen">
             <Header />
             <div>{children}</div>
           </main>

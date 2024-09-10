@@ -5,7 +5,7 @@ import Notification from "@/components/Dashboard/Notifications/notification";
 
 export default function Dashboard() {
   return (
-    <main className="p-[30px] overflow-y-scroll h-screen">
+    <main className="p-[30px]">
       <div className="flex justify-between align-top w-[100%] gap-4">
         <div className="w-[70%]">
           <TaskChart />

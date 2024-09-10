@@ -1,7 +1,10 @@
+"use client";
+import AllTask from "@/components/AllTask/allTask";
+
 export default function Page() {
   return (
-    <main>
-      <div>Task Page</div>
+    <main className="p-[30px]">
+      <AllTask />
     </main>
   );
 }
