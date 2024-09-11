@@ -3,7 +3,7 @@ import Notification from "@/components/Notifucation/notification";
 
 export default function Page() {
   return (
-    <main>
+    <main className="p-[30px]">
       <Notification />
     </main>
   );
