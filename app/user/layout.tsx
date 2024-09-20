@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar/Navbar";
 import Header from "@/components/Header/Header";
+import { useAuth } from "@/hook/useAuth";
+import { isAuthenticated } from "@/utils/auth";
+import { redirect } from "next/navigation";
+import { useLayoutEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +19,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // const isAuthenticated = useAuth();
+  // if (!isAuthenticated) {
+  //   return <p>Loading...</p>;
+  // }
+
   return (
     <html lang="en">
       <body className={inter.className}>
