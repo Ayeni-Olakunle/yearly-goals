@@ -10,7 +10,7 @@ import { IoMdAdd } from "react-icons/io";
 import { IoIosNotifications } from "react-icons/io";
 import { IoMdPerson } from "react-icons/io";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 interface navLinks {
   id: string;
@@ -21,6 +21,7 @@ interface navLinks {
 
 export default function Navbar() {
   const path = usePathname();
+  const router = useRouter();
 
   const NavLink: navLinks[] = [
     {
@@ -67,7 +68,10 @@ export default function Navbar() {
     },
   ];
 
-  console.log(path);
+  function logout() {
+    localStorage.clear();
+    router.push("/");
+  }
 
   return (
     <nav className="w-[350px] bg-[#407BFF] h-full overflow-y-scroll">
@@ -102,15 +106,16 @@ export default function Navbar() {
         })}
       </ul>
 
-      <p className="mt-[50px]">
-        <Link
-          href={"/"}
+      <div className="mt-[50px]">
+        <button
           className="font-[Inter] text-[15px] font-medium leading-[27.84px] text-left flex justify-start items-center gap-[10px] text-[white] w-[fit-content] px-[40px] py-[0] mb-[20px]"
+          type="button"
+          onClick={logout}
         >
           <RiLogoutBoxLine className="text-[25px]" />
-          Log out
-        </Link>
-      </p>
+          Logout
+        </button>
+      </div>
     </nav>
   );
 }

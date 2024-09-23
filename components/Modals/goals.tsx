@@ -4,8 +4,6 @@ import React from "react";
 import { IoCloseSharp } from "react-icons/io5";
 
 export default function GoalsModal(props: any) {
-  console.log(props.show);
-
   return (
     <>
       {props.show && (
@@ -35,6 +33,7 @@ export default function GoalsModal(props: any) {
                   type="text"
                   name=""
                   id=""
+                  defaultValue={props?.goalName}
                   className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
                 />
               </div>
@@ -47,6 +46,9 @@ export default function GoalsModal(props: any) {
                   Goals Status
                 </label>
                 <select className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]">
+                  <option value="In Progress" defaultValue={props?.status}>
+                    {props?.status}
+                  </option>
                   <option value="In Progress">In Progress</option>
                   <option value="Completed">Completed</option>
                   <option value="Cancel">Cancel</option>
@@ -65,6 +67,7 @@ export default function GoalsModal(props: any) {
                   name=""
                   id=""
                   rows={5}
+                  defaultValue={props?.goalsDesc}
                   className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
                 ></textarea>
               </div>
@@ -77,6 +80,7 @@ export default function GoalsModal(props: any) {
                   type="date"
                   name=""
                   id=""
+                  defaultValue={props?.startDate}
                   className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
                 />
               </div>
@@ -89,6 +93,7 @@ export default function GoalsModal(props: any) {
                   type="date"
                   name=""
                   id=""
+                  defaultValue={props?.endDate}
                   className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
                 />
               </div>

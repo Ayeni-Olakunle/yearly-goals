@@ -5,9 +5,15 @@ import { FiPlus } from "react-icons/fi";
 import Link from "next/link";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import GoalsModal from "../Modals/goals";
+import { allGoal } from "@/service/mutations";
+import { goalsType } from "@/types/types";
 
 export default function AllGoals() {
   const [modalShow, setModalShow] = useState<boolean>(false);
+  const [position, setPosition] = useState<number>(0);
+  const allGoals = allGoal();
+  console.log(allGoals.data);
+
   return (
     <section>
       <div className="flex justify-between items-center">
@@ -41,86 +47,44 @@ export default function AllGoals() {
             </tr>
           </thead>
           <tbody>
-            <tr className="[border-bottom:1px_solid_#CECECE]">
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                01
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                Save 1 million This Year
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                01/01/2025
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                30/12/2025
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
-                <IoIosArrowDropdownCircle
-                  className="cursor-pointer"
-                  onClick={() => {
-                    setModalShow(true);
-                  }}
-                />
-              </td>
-            </tr>
-
-            <tr className="[border-bottom:1px_solid_#CECECE]">
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                01
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                Save 1 million This Year
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                01/01/2025
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                30/12/2025
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
-                <IoIosArrowDropdownCircle />
-              </td>
-            </tr>
-            <tr className="[border-bottom:1px_solid_#CECECE]">
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                01
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                Save 1 million This Year
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                01/01/2025
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                30/12/2025
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
-                <IoIosArrowDropdownCircle />
-              </td>
-            </tr>
-            <tr className="[border-bottom:1px_solid_#CECECE]">
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                01
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                Save 1 million This Year
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                01/01/2025
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                30/12/2025
-              </td>
-              <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
-                <IoIosArrowDropdownCircle />
-              </td>
-            </tr>
+            {allGoals.data?.data.map((item, index: number) => {
+              return (
+                <tr className="[border-bottom:1px_solid_#CECECE]">
+                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    {index + 1}
+                  </td>
+                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    {item.taskName}
+                  </td>
+                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    {item.startDate}
+                  </td>
+                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    {item.endDate}
+                  </td>
+                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
+                    <IoIosArrowDropdownCircle
+                      className="cursor-pointer"
+                      onClick={() => {
+                        setPosition(index);
+                        setModalShow(true);
+                      }}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
 
       <GoalsModal
         show={modalShow}
+        goalName={allGoals.data?.data[position].taskName}
+        status={allGoals.data?.data[position].status}
+        goalsDesc={allGoals.data?.data[position].taskDesc}
+        startDate={allGoals.data?.data[position].startDate}
+        endDate={allGoals.data?.data[position].endDate}
         onHide={() => {
           setModalShow(false);
         }}

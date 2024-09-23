@@ -1,12 +1,19 @@
+"use client";
+
 import TaskChart from "@/components/Dashboard/Task/TaskChart";
 import TaskDetails from "@/components/Dashboard/Task/TaskDetails";
 import NotificationDetails from "@/components/Dashboard/Notifications/notificationDetails";
 import Notification from "@/components/Dashboard/Notifications/notification";
-import { useAuth } from "@/hook/useAuth";
+import { isLoggedIn } from "@/helper/helper";
+import { redirect } from "next/navigation";
+import { useEffect } from "react";
+import Logout from "@/components/Modals/logout";
 
 export default function Dashboard() {
-  const session = useAuth();
-  console.log(session);
+  // if (!isLoggedIn()) {
+  //   return <Logout />;
+  // }
+
   return (
     <main className="p-[30px]">
       <div className="flex justify-between align-top w-[100%] gap-4">

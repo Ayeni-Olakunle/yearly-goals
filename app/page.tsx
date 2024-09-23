@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { useLogin } from "@/service/mutations";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { LoginType } from "@/types/auth";
+import { LoginType } from "@/types/types";
 
 export default function Login() {
   const userLoginMutation = useLogin();
