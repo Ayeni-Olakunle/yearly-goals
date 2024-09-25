@@ -28,3 +28,15 @@ export interface addGoals {
     endTime: string,
     reminder: boolean;
   }
+
+  export interface editGoal {
+    id: number
+    taskName: string,
+    taskDesc: string,
+    taskLink: string,
+    startDate: string,
+    endDate: string,
+    startTime: string,
+    endTime: string,
+    reminder: boolean;
+  }

@@ -3,18 +3,21 @@ import React from "react";
 import { addGoalMut } from "@/service/mutations";
 import { addGoals } from "@/types/types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
 
 export default function AddGoal() {
   const addGoalMutation = addGoalMut();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<addGoals>();
 
   const handleGoals: SubmitHandler<addGoals> = (data) => {
     addGoalMutation.mutate(data);
+    if (addGoalMutation.isSuccess) {
+      reset();
+    }
   };
 
   return (
@@ -146,8 +149,12 @@ export default function AddGoal() {
           </div>
         </div>
         <div className="flex justify-end items-center mt-5">
-          <button className="bg-[#407BFF] text-[white] px-[40px] py-[12px] rounded-[3px]">
-            Submit
+          <button
+            className="bg-[#407BFF] text-[white] px-[40px] py-[12px] rounded-[3px]"
+            type="submit"
+            disabled={addGoalMutation.isPending}
+          >
+            {addGoalMutation.isPending ? "Please wait..." : "Submit"}
           </button>
         </div>
       </form>
