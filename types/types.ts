@@ -6,9 +6,9 @@ export interface LoginType {
 export interface goalsType {
     _id: string;
     user: string;
-    taskName: string;
-    taskDesc: string;
-    taskLink: string;
+    goalName: string;
+    goalDesc: string;
+    goalLink: string;
     startDate: string;
     endDate: string;
     startTime: string;
@@ -19,9 +19,9 @@ export interface goalsType {
 }
 
 export interface addGoals {
-    taskName: string,
-    taskDesc: string,
-    taskLink: string,
+    goalName: string,
+    goalDesc: string,
+    goalLink: string,
     startDate: string,
     endDate: string,
     startTime: string,
@@ -40,3 +40,17 @@ export interface addGoals {
     endTime: string,
     reminder: boolean;
   }
+
+
+  
+  export interface taskGraph {
+    type: string
+    total: number
+  }
+  
+  export interface alltaskGraph {
+    graph: Array<taskGraph>
+    totalTask: number
+  }
+
+  

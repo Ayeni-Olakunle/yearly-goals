@@ -7,12 +7,42 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import GoalsModal from "../Modals/goals";
 import { allGoal } from "@/service/mutations";
 import { goalsType } from "@/types/types";
+import { toast } from "react-toastify";
+import LoaderSpin from "../Loader/loader";
 
 export default function AllGoals() {
+  const [searchQuery, setSearchQuery] = useState("");
   const [modalShow, setModalShow] = useState<boolean>(false);
   const [position, setPosition] = useState<number>(0);
-  const allGoals = allGoal();
-  console.log(allGoals.data);
+  const { data: allGoals = [], isLoading, isSuccess, isError } = allGoal();
+
+  if (isLoading) {
+    return <LoaderSpin />;
+  }
+
+  if (isError) {
+    toast.error("Opps something went wrong");
+  }
+
+  const filterList = allGoals.data.filter((item: { goalName: string }) => {
+    if (searchQuery === "") {
+      return allGoals.data;
+    } else {
+      let checking = item?.goalName
+        .toLowerCase()
+        .includes(searchQuery.toLowerCase());
+
+      return checking;
+    }
+  });
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // if (isSuccess) {
+  //   toast.success("Successfully Fetched Data");
+  // }
 
   return (
     <section>
@@ -21,8 +51,8 @@ export default function AllGoals() {
           <input
             type="search"
             placeholder="Search for goals"
-            name=""
-            id=""
+            value={searchQuery}
+            onChange={handleSearchChange}
             className="w-full text-[13px] p-[13px] outline-[none] text-[gray] outline-[0]"
           />
           <IoIosSearch />
@@ -47,48 +77,56 @@ export default function AllGoals() {
             </tr>
           </thead>
           <tbody>
-            {allGoals.data?.data.map((item, index: number) => {
-              return (
-                <tr className="[border-bottom:1px_solid_#CECECE]">
-                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                    {index + 1}
-                  </td>
-                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                    {item.taskName}
-                  </td>
-                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                    {item.startDate}
-                  </td>
-                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
-                    {item.endDate}
-                  </td>
-                  <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
-                    <IoIosArrowDropdownCircle
-                      className="cursor-pointer"
-                      onClick={() => {
-                        setPosition(index);
-                        setModalShow(true);
-                      }}
-                    />
-                  </td>
-                </tr>
-              );
-            })}
+            {allGoals?.length == 0 ? (
+              <p>No Data</p>
+            ) : (
+              filterList.map((item: goalsType, index: number) => {
+                return (
+                  <tr className="[border-bottom:1px_solid_#CECECE]">
+                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                      {index + 1}
+                    </td>
+                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                      {item.goalName}
+                    </td>
+                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                      {item.startDate}
+                    </td>
+                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                      {item.endDate}
+                    </td>
+                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
+                      <IoIosArrowDropdownCircle
+                        className="cursor-pointer"
+                        onClick={() => {
+                          setPosition(index);
+                          setModalShow(true);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </table>
       </div>
 
-      <GoalsModal
-        show={modalShow}
-        goalName={allGoals.data?.data[position].taskName}
-        status={allGoals.data?.data[position].status}
-        goalsDesc={allGoals.data?.data[position].taskDesc}
-        startDate={allGoals.data?.data[position].startDate}
-        endDate={allGoals.data?.data[position].endDate}
-        onHide={() => {
-          setModalShow(false);
-        }}
-      />
+      {allGoals?.length !== 0 && (
+        <GoalsModal
+          show={modalShow}
+          _id={allGoals?.data[position]?._id}
+          goalName={allGoals?.data[position]?.goalName}
+          status={allGoals.data[position]?.status}
+          goalDesc={allGoals.data[position]?.goalDesc}
+          goalLink={allGoals.data[position]?.goalLink}
+          startDate={allGoals.data[position]?.startDate}
+          endDate={allGoals.data[position]?.endDate}
+          onHide={() => {
+            setModalShow(false);
+          }}
+        />
+      )}
     </section>
   );
 }

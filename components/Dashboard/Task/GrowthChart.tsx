@@ -9,9 +9,9 @@ interface ChartType {
   chart: any;
 }
 
-export default function TaskChart() {
+export default function GrowthChart() {
   const chartRef = useRef<ChartType | null>(null);
-  const { data, isLoading, isSuccess } = allTaskGraph();
+  const { data, isLoading, isSuccess } = allGrowthGraphsFn();
 
   useEffect(() => {
     if (chartRef.current) {
@@ -20,6 +20,8 @@ export default function TaskChart() {
       }
 
       const context = chartRef.current.getContext("2d");
+
+      const label = ["Completed", "In Progress", "Pending", "Close Tasks"];
 
       const newChart = new Chart(context, {
         type: "bar",
@@ -56,7 +58,7 @@ export default function TaskChart() {
           plugins: {
             title: {
               display: true,
-              text: "All Task Progress",
+              text: "All Growth Progress",
             },
           },
           layout: {

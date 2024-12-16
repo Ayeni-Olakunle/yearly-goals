@@ -8,6 +8,9 @@ import { isLoggedIn } from "@/helper/helper";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 import Logout from "@/components/Modals/logout";
+import GrowthChart from "@/components/Dashboard/Task/GrowthChart";
+import GrowthDetails from "@/components/Dashboard/Task/GrowthDetails";
+
 
 export default function Dashboard() {
   // if (!isLoggedIn()) {
@@ -18,10 +21,10 @@ export default function Dashboard() {
     <main className="p-[30px]">
       <div className="flex justify-between align-top w-[100%] gap-4">
         <div className="w-[70%]">
-          <TaskChart />
+          <GrowthChart />
         </div>
         <div className="w-[30%]">
-          <TaskDetails />
+          <GrowthDetails />
         </div>
       </div>
 
@@ -44,4 +47,4 @@ export default function Dashboard() {
       </div>
     </main>
   );
-}
+};

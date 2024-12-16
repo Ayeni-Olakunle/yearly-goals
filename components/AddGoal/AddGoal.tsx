@@ -3,6 +3,7 @@ import React from "react";
 import { addGoalMut } from "@/service/mutations";
 import { addGoals } from "@/types/types";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export default function AddGoal() {
   const addGoalMutation = addGoalMut();
@@ -15,9 +16,8 @@ export default function AddGoal() {
 
   const handleGoals: SubmitHandler<addGoals> = (data) => {
     addGoalMutation.mutate(data);
-    if (addGoalMutation.isSuccess) {
-      reset();
-    }
+
+    // addGoalMutation.isSuccess && reset();
   };
 
   return (
@@ -35,20 +35,20 @@ export default function AddGoal() {
           <div>
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
-                htmlFor="taskName"
+                htmlFor="goalName"
                 className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Goal Name
               </label>
               <input
                 type="text"
-                id="taskName"
-                {...register("taskName", { required: "Goal Name is required" })}
+                id="goalName"
+                {...register("goalName", { required: "Goal Name is required" })}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray] outline-0"
               />
-              {errors.taskName && (
+              {errors.goalName && (
                 <p className="text-[tomato] text-xs">
-                  {errors.taskName.message}
+                  {errors.goalName.message}
                 </p>
               )}
             </div>
@@ -99,15 +99,15 @@ export default function AddGoal() {
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
-                htmlFor="taskName"
+                htmlFor="goalName"
                 className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Goal Link
               </label>
               <input
                 type="url"
-                id="taskName"
-                {...register("taskLink")}
+                id="goalName"
+                {...register("goalLink")}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
             </div>
@@ -123,13 +123,13 @@ export default function AddGoal() {
                 id="GoalDescription"
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
                 rows={5}
-                {...register("taskDesc", {
+                {...register("goalDesc", {
                   required: "Goal Description is required",
                 })}
               ></textarea>
-              {errors.taskDesc && (
+              {errors.goalDesc && (
                 <p className="text-[tomato] text-xs mt-[2px]">
-                  {errors.taskDesc.message}
+                  {errors.goalDesc.message}
                 </p>
               )}
             </div>
@@ -150,7 +150,7 @@ export default function AddGoal() {
         </div>
         <div className="flex justify-end items-center mt-5">
           <button
-            className="bg-[#407BFF] text-[white] px-[40px] py-[12px] rounded-[3px]"
+            className="bg-[#407BFF] button text-[white] px-[40px] py-[12px] rounded-[3px]"
             type="submit"
             disabled={addGoalMutation.isPending}
           >

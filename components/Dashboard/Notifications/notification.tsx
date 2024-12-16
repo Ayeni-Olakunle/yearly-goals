@@ -44,6 +44,7 @@ export default function Notification() {
             </div>
           </div>
         </div>
+
         <div className="w-full flex justify-between items-center font-[Inter] text-sm font-medium leading-[26.63px] text-left text-[#646060] p-[15px] [border-bottom:1px_solid_#D9D9D9]">
           <div className="flex justify-start items-center gap-[20px]">
             <div className="w-[40px] h-[40px] flex justify-center items-center bg-[#407bff] text-[white] text-xl rounded-[50px]">

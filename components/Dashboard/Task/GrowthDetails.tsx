@@ -1,13 +1,13 @@
 import { allTaskGraph, allGrowthGraphsFn } from "@/service/query";
 import { alltaskGraph, taskGraph } from "@/types/types";
 
-export default function TaskDetails() {
-  const { data, isLoading, isSuccess } = allTaskGraph();
+export default function GrowthDetails() {
+  const { data, isLoading, isSuccess } = allGrowthGraphsFn();
 
   return (
     <section className="mt-[4.7em]">
       <h1 className="font-[Inter] text-[17px] font-bold leading-[22.99px] text-left text-[#407bff] mb-[5px]">
-        Tasks Details
+        Growth Details
       </h1>
       <div className="border-[1.5px] border-solid border-[#D9D9D9] overflow-hidden rounded-[5px]">
         {data?.data?.graph.map((item: taskGraph, index: number) => {
