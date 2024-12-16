@@ -85,6 +85,7 @@ export function deleteGoalMut(id:string) {
 
 export function editGoalMut(id:string) {
     // const useQueryClient = useQueryClient();
+    const queryClient = useQueryClient();
     return useMutation({
         mutationFn: (data: editGoal) => editGoalAxios(data, id),
         onMutate: () => {
@@ -97,7 +98,7 @@ export function editGoalMut(id:string) {
 
         onSuccess: () => {
             toast.success("Goals updated successfully");
-            allGoal();
+            queryClient.invalidateQueries({ queryKey: ["all-goals"] });
         },
 
         onSettled: () => {

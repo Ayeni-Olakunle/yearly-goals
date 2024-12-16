@@ -4,6 +4,7 @@ import React from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { editGoalMut, deleteGoalMut } from "@/service/mutations";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 interface goalDetail {
   endDate: string;
@@ -19,6 +20,7 @@ interface goalDetail {
 
 export default function GoalsModal(props: goalDetail) {
   const editGoal = editGoalMut(props?._id);
+  const queryClient = useQueryClient();
   const deleteGoal = deleteGoalMut(props?._id);
 
   const {
@@ -29,6 +31,7 @@ export default function GoalsModal(props: goalDetail) {
 
   const handleGoals: SubmitHandler<goalDetail> = (data: any) => {
     editGoal.mutate(data);
+    // queryClient.invalidateQueries({ queryKey: ["all-goals"] });
   };
 
   return (

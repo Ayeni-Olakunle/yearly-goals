@@ -40,10 +40,6 @@ export default function AllGoals() {
     setSearchQuery(e.target.value);
   };
 
-  // if (isSuccess) {
-  //   toast.success("Successfully Fetched Data");
-  // }
-
   return (
     <section>
       <div className="flex justify-between items-center">
