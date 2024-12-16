@@ -20,7 +20,6 @@ interface goalDetail {
 export default function GoalsModal(props: goalDetail) {
   const editGoal = editGoalMut(props?._id);
   const deleteGoal = deleteGoalMut(props?._id);
-  console.log(props?._id);
 
   const {
     register,

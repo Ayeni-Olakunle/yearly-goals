@@ -39,7 +39,7 @@ export function allGoal() {
     })
 };
 
-export function addGoalMut() {
+export function addGoalMut(reset: () => void) {
     return useMutation({
         mutationFn: (data: addGoals) => addGoal(data),
         onMutate: () => {
@@ -52,6 +52,7 @@ export function addGoalMut() {
 
         onSuccess: () => {
             toast.success("Goal Created Successfully");
+            reset();
         },
 
         onSettled: () => {

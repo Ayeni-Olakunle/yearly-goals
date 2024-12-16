@@ -6,18 +6,16 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
 export default function AddGoal() {
-  const addGoalMutation = addGoalMut();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<addGoals>();
+  const addGoalMutation = addGoalMut(reset);
 
   const handleGoals: SubmitHandler<addGoals> = (data) => {
     addGoalMutation.mutate(data);
-
-    // addGoalMutation.isSuccess && reset();
   };
 
   return (
