@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { LoginType, addGoals, editGoal } from "@/types/types";
-import { userLogin, allGoals, addGoal, editGoalAxios, deleteGoal  } from "./api";
+import { LoginType, addGoals, editGoal, addTask, taskDetails } from "@/types/types";
+import { userLogin, allGoals, addGoal, editGoalAxios, deleteGoal, addTasks, deleteTask , editTaskAxios } from "./api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -39,6 +39,28 @@ export function allGoal() {
     })
 };
 
+export function addTasksMut(reset: () => void) {
+    return useMutation({
+        mutationFn: (data: addTask) => addTasks(data),
+        onMutate: () => {
+            console.log("Mutate");
+        },
+
+        onError: () => {
+            toast.error("Opps something went wrong");
+        },
+
+        onSuccess: () => {
+            toast.success("Task Created Successfully");
+            reset();
+        },
+
+        onSettled: () => {
+            console.log("Settled")
+        }
+    })
+};
+
 export function addGoalMut(reset: () => void) {
     return useMutation({
         mutationFn: (data: addGoals) => addGoal(data),
@@ -61,16 +83,18 @@ export function addGoalMut(reset: () => void) {
     })
 };
 
-export function deleteGoalMut(id:string) {
-    // const useQueryClient = useQueryClient();
+export function deleteTaskMut(id:string, close: () => void) {
+    const queryClient = useQueryClient();
     return useMutation({
-        mutationFn: () => deleteGoal(id),
+        mutationFn: () => deleteTask(id),
         onMutate: () => {
             console.log("Mutate");
         },
 
         onSuccess: () => {
-            toast.success("Goal deleted successfully");
+            toast.success("Task deleted successfully");
+            queryClient.invalidateQueries({ queryKey: ["all-tasks"] });
+            close()
         },
 
         onError: () => {
@@ -83,8 +107,31 @@ export function deleteGoalMut(id:string) {
     })
 };
 
-export function editGoalMut(id:string) {
-    // const useQueryClient = useQueryClient();
+export function deleteGoalMut(id:string, close: () => void) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: () => deleteGoal(id),
+        onMutate: () => {
+            console.log("Mutate");
+        },
+
+        onSuccess: () => {
+            toast.success("Goal deleted successfully");
+            queryClient.invalidateQueries({ queryKey: ["all-goals"] });
+            close()
+        },
+
+        onError: () => {
+            toast.error("Opps something went wrong");
+        },
+
+        onSettled: () => {
+            console.log("Settled")
+        }
+    })
+};
+
+export function editGoalMut(id:string, close: () => void) {
     const queryClient = useQueryClient();
     return useMutation({
         mutationFn: (data: editGoal) => editGoalAxios(data, id),
@@ -98,7 +145,33 @@ export function editGoalMut(id:string) {
 
         onSuccess: () => {
             toast.success("Goals updated successfully");
-            queryClient.invalidateQueries({ queryKey: ["all-goals"] });
+            queryClient.invalidateQueries({ queryKey: ["all-tasks"] });
+            close()
+        },
+
+        onSettled: () => {
+            console.log("Settled")
+            
+        }
+    })
+};
+
+export function editTaskMut(id:string, close: () => void) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: (data: taskDetails) => editTaskAxios(data, id),
+        onMutate: () => {
+            console.log("Mutate");
+        },
+
+        onError: () => {
+            toast.error("Opps something went wrong");
+        },
+
+        onSuccess: () => {
+            toast.success("Task updated successfully");
+            queryClient.invalidateQueries({ queryKey: ["all-tasks"] });
+            close()
         },
 
         onSettled: () => {

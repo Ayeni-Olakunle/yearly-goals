@@ -19,9 +19,8 @@ interface goalDetail {
 }
 
 export default function GoalsModal(props: goalDetail) {
-  const editGoal = editGoalMut(props?._id);
-  const queryClient = useQueryClient();
-  const deleteGoal = deleteGoalMut(props?._id);
+  const editGoal = editGoalMut(props?._id, props?.onHide);
+  const deleteGoal = deleteGoalMut(props?._id, props?.onHide);
 
   const {
     register,
@@ -31,7 +30,6 @@ export default function GoalsModal(props: goalDetail) {
 
   const handleGoals: SubmitHandler<goalDetail> = (data: any) => {
     editGoal.mutate(data);
-    // queryClient.invalidateQueries({ queryKey: ["all-goals"] });
   };
 
   return (

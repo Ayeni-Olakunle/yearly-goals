@@ -3,7 +3,6 @@ import React from "react";
 import { addGoalMut } from "@/service/mutations";
 import { addGoals } from "@/types/types";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { toast } from "react-toastify";
 
 export default function AddGoal() {
   const {

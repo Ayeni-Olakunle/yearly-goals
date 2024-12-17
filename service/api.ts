@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginType, goalsType, addGoals, editGoal, taskGraph } from "@/types/types"
+import { LoginType, goalsType, addGoals, editGoal, taskGraph, addTask, taskDetails } from "@/types/types"
 
 
 const axiosInstance = axios.create({baseURL: process.env.NEXT_PUBLIC_BaseURL})
@@ -49,10 +49,22 @@ export const allGoals = async () => {
     )
 }
 
+export const allTask = async () => {
+    return(
+        await axiosInstanceAuth.get<addTask[], any>("/task")
+    )
+}
+
 
 export const addGoal = async (data: addGoals) => {
     return(
         await axiosInstanceAuth.post("/growth/create", data)
+    )
+}
+
+export const addTasks = async (data: addTask) => {
+    return(
+        await axiosInstanceAuth.post("/task/addTask", data)
     )
 }
 
@@ -62,9 +74,21 @@ export const editGoalAxios = async (data: editGoal, id:string) => {
     )
 }
 
+export const editTaskAxios = async (data: taskDetails, id:string) => {
+    return(
+        await axiosInstanceAuth.patch(`/task/editTask/${id}`, data)
+    )
+}
+
 export const deleteGoal = async (id:string) => {
     return(
         await axiosInstanceAuth.delete(`/growth/delete/${id}`)
+    )
+}
+
+export const deleteTask = async (id:string) => {
+    return(
+        await axiosInstanceAuth.delete(`/task/deleteTask/${id}`)
     )
 }
 

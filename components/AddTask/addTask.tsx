@@ -1,6 +1,21 @@
 "use client";
+import { addTasksMut } from "@/service/mutations";
+import { addTask } from "@/types/types";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function AddTask() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<addTask>();
+  const addTaskMutation = addTasksMut(reset);
+
+  const handleTask: SubmitHandler<addTask> = (data) => {
+    addTaskMutation.mutate(data);
+  };
+
   return (
     <div>
       <div>
@@ -11,7 +26,7 @@ export default function AddTask() {
           Please take your goals very serious
         </p>
       </div>
-      <form>
+      <form onSubmit={handleSubmit(handleTask)}>
         <div className="border-[1.5px] border-solid border-[#dddddd] mt-[8px] rounded-[5px] p-[25px]">
           <div>
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
@@ -23,10 +38,14 @@ export default function AddTask() {
               </label>
               <input
                 type="text"
-                name=""
-                id=""
+                {...register("taskName", { required: "Task Name is required" })}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
+              {errors.taskName && (
+                <p className="text-[tomato] text-xs">
+                  {errors.taskName.message}
+                </p>
+              )}
             </div>
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
@@ -38,13 +57,17 @@ export default function AddTask() {
               </label>
               <input
                 type="text"
-                name=""
-                id=""
+                {...register("taskName", { required: "Task Link is required" })}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
+              {errors.taskLink && (
+                <p className="text-[tomato] text-xs">
+                  {errors.taskLink.message}
+                </p>
+              )}
             </div>
 
-            <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
+            {/* <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
                 htmlFor="GoalName"
                 className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
@@ -53,11 +76,15 @@ export default function AddTask() {
               </label>
               <input
                 type="text"
-                name=""
-                id=""
+                {...register("taskName", { required: "Task Link is required" })}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
-            </div>
+              {errors.taskLink && (
+                <p className="text-[tomato] text-xs">
+                  {errors.taskLink.message}
+                </p>
+              )}
+            </div> */}
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
@@ -67,13 +94,19 @@ export default function AddTask() {
                 Task Description
               </label>
               <textarea
-                name=""
-                id=""
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
                 rows={5}
+                {...register("taskDesc", {
+                  required: "Task Description is required",
+                })}
               ></textarea>
+              {errors.taskDesc && (
+                <p className="text-[tomato] text-xs">
+                  {errors.taskDesc.message}
+                </p>
+              )}
             </div>
-            <div className="flex gap-[10px] items-center justify-start">
+            {/* <div className="flex gap-[10px] items-center justify-start">
               <input type="checkbox" name="" id="" />
               <label
                 htmlFor="SetReminder"
@@ -81,7 +114,7 @@ export default function AddTask() {
               >
                 Set Reminder
               </label>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="flex justify-end items-center mt-5">

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { taskGraphs, allGrowthGraphs } from "./api";
+import { taskGraphs, allGrowthGraphs, allTask } from "./api";
 
 export function allTaskGraph() {
     return useQuery({
@@ -13,5 +13,12 @@ export function allGrowthGraphsFn() {
     return useQuery({
         queryKey: ["All Growth Graphs"],
         queryFn: allGrowthGraphs,
+    })
+};
+
+export function allTaskFn() {
+    return useQuery({
+        queryKey: ["all-tasks"],
+        queryFn: allTask,
     })
 };

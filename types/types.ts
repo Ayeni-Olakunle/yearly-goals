@@ -29,6 +29,15 @@ export interface addGoals {
     reminder: boolean;
   }
 
+  export interface addTask {
+    taskName: string,
+    taskDesc: string,
+    taskLink: string,
+    taskStatus: string,
+    createdAt: string,
+    updatedAt: string,
+  }
+
   export interface editGoal {
     id: number
     taskName: string,
@@ -53,4 +62,9 @@ export interface addGoals {
     totalTask: number
   }
 
+  export interface taskDetails {
+    taskName: string;
+    taskDesc: string;
+    status: string;
+  }
   
