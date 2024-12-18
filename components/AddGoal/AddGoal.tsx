@@ -20,10 +20,10 @@ export default function AddGoal() {
   return (
     <div>
       <div>
-        <h1 className="font-[Inter] text-3xl font-bold leading-[36.31px] text-left">
+        <h1 className=" text-3xl font-bold leading-[36.31px] text-left">
           Add Goals
         </h1>
-        <p className="font-[Inter] text-[15px] font-normal leading-[24.2px] text-left text-[#8D8D8D]">
+        <p className=" text-[15px] font-normal leading-[24.2px] text-left text-[#8D8D8D]">
           Please take your goals very serious
         </p>
       </div>
@@ -33,7 +33,7 @@ export default function AddGoal() {
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
                 htmlFor="goalName"
-                className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
+                className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Goal Name
               </label>
@@ -54,7 +54,7 @@ export default function AddGoal() {
               <div className="px-[0] py-[12px] flex justify-start items-start flex-col w-[45%]">
                 <label
                   htmlFor="startDate"
-                  className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
+                  className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
                 >
                   Start Date
                 </label>
@@ -76,7 +76,7 @@ export default function AddGoal() {
               <div className="px-[0] py-[12px] flex justify-start items-start flex-col w-[45%]">
                 <label
                   htmlFor="endDate"
-                  className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
+                  className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
                 >
                   End Date
                 </label>
@@ -97,7 +97,7 @@ export default function AddGoal() {
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
                 htmlFor="goalName"
-                className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
+                className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Goal Link
               </label>
@@ -112,7 +112,7 @@ export default function AddGoal() {
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
                 htmlFor="GoalDescription"
-                className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
+                className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Goal Description
               </label>
@@ -138,7 +138,7 @@ export default function AddGoal() {
               />
               <label
                 htmlFor="SetReminder"
-                className="font-[Inter] text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
+                className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Set Reminder
               </label>

@@ -55,7 +55,7 @@ export default function AllGoals() {
         </div>
         <Link
           href={"/user/add-goals"}
-          className="flex gap-[15px] font-[Inter] text-[15px] font-semibold leading-[21.78px] text-left bg-[#407bff] text-[white] items-center px-[20px] py-[12px] rounded-[5px]"
+          className="flex gap-[15px]  text-[15px] font-semibold leading-[21.78px] text-left bg-[#407bff] text-[white] items-center px-[20px] py-[12px] rounded-[5px]"
         >
           <FiPlus />
           Add Goals
@@ -63,8 +63,8 @@ export default function AllGoals() {
       </div>
       <div className="mt-[40px] rounded-[5px] overflow-hidden">
         <table className="w-full">
-          <thead className="bg-[#407BFF] font-[Inter] text-[13px] font-normal leading-[26.63px] text-center text-[white]">
-            <tr className="bg-[#407BFF] font-[Inter] text-[13px] font-normal leading-[26.63px] text-center text-[white]">
+          <thead className="bg-[#407BFF]  text-[13px] font-normal leading-[26.63px] text-center text-[white]">
+            <tr className="bg-[#407BFF]  text-[13px] font-normal leading-[26.63px] text-center text-[white]">
               <th className="p-[12px]">S/N</th>
               <th className="p-[12px]">Goals Name</th>
               <th className="p-[12px]">Start Date</th>
@@ -79,19 +79,19 @@ export default function AllGoals() {
               filterList.map((item: goalsType, index: number) => {
                 return (
                   <tr className="[border-bottom:1px_solid_#CECECE]">
-                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
                       {index + 1}
                     </td>
-                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
                       {item.goalName}
                     </td>
-                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
                       {item.startDate}
                     </td>
-                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
                       {item.endDate}
                     </td>
-                    <td className="p-[12px] font-[Inter] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
+                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
                       <IoIosArrowDropdownCircle
                         className="cursor-pointer"
                         onClick={() => {

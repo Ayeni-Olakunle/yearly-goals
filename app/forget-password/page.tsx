@@ -10,18 +10,18 @@ export default function Page() {
         <form action="">
           <div className="flex gap-[20px] items-center justify-start">
             <img src={logo.src} alt="Available" className="w-[70px]" />
-            <span className="font-[Inter] text-[22px] font-bold leading-[30.26px] text-left text-[#407bff]">
+            <span className=" text-[22px] font-bold leading-[30.26px] text-left text-[#407bff]">
               Emmy
             </span>
           </div>
-          <h1 className="font-[Inter] text-[21px] font-bold leading-[30.26px] text-[#407bff] text-center mx-[0] my-[10px]">
+          <h1 className=" text-[21px] font-bold leading-[30.26px] text-[#407bff] text-center mx-[0] my-[10px]">
             Forget Password
           </h1>
 
           <div className="flex justify-start items-start flex-col mb-[20px]">
             <label
               htmlFor="EmailAddress"
-              className="font-[Inter] text-[15px] font-normal leading-[24.2px] text-left text-[#989898] mb-[2px]"
+              className=" text-[15px] font-normal leading-[24.2px] text-left text-[#989898] mb-[2px]"
             >
               Email Address
             </label>

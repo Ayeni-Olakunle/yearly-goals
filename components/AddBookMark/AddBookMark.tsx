@@ -1,18 +1,18 @@
 "use client";
-import { addTasksMut } from "@/service/mutations";
-import { addTask } from "@/types/types";
+import { addBookMarkMut } from "@/service/mutations";
+import { bookMarkProps } from "@/types/types";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-export default function AddTask() {
+export default function AddBookMark() {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<addTask>();
-  const addTaskMutation = addTasksMut(reset);
+  } = useForm<bookMarkProps>();
+  const addTaskMutation = addBookMarkMut(reset);
 
-  const handleTask: SubmitHandler<addTask> = (data) => {
+  const handleTask: SubmitHandler<bookMarkProps> = (data) => {
     addTaskMutation.mutate(data);
   };
 
@@ -20,7 +20,7 @@ export default function AddTask() {
     <div>
       <div>
         <h1 className=" text-3xl font-bold leading-[36.31px] text-left">
-          Add Tasks
+          Add Bookmark
         </h1>
         <p className=" text-[15px] font-normal leading-[24.2px] text-left text-[#8D8D8D]">
           Please take your goals very serious
@@ -34,16 +34,18 @@ export default function AddTask() {
                 htmlFor="GoalName"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
-                Task Name
+                Bookmark Name
               </label>
               <input
                 type="text"
-                {...register("taskName", { required: "Task Name is required" })}
+                {...register("bookMarkName", {
+                  required: "Bookmark Name is required",
+                })}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
-              {errors.taskName && (
+              {errors.bookMarkName && (
                 <p className="text-[tomato] text-xs">
-                  {errors.taskName.message}
+                  {errors.bookMarkName.message}
                 </p>
               )}
             </div>
@@ -53,56 +55,60 @@ export default function AddTask() {
                 htmlFor="GoalName"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
-                Task Link
+                Bookmark Link
               </label>
               <input
                 type="text"
-                {...register("taskName", { required: "Task Link is required" })}
+                {...register("bookMarkLink", {
+                  required: "Bookmark Link is required",
+                })}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
-              {errors.taskLink && (
+              {errors.bookMarkLink && (
                 <p className="text-[tomato] text-xs">
-                  {errors.taskLink.message}
+                  {errors.bookMarkLink.message}
                 </p>
               )}
             </div>
 
-            {/* <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
+            <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
                 htmlFor="GoalName"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
-                Task Value
+                Bookmark Value
               </label>
               <input
                 type="text"
-                {...register("taskName", { required: "Task Link is required" })}
+                {...register("bookMarkValue", {
+                  required: "Bookmark Value is required",
+                })}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
-              {errors.taskLink && (
+              {errors.bookMarkValue && (
                 <p className="text-[tomato] text-xs">
-                  {errors.taskLink.message}
+                  {errors.bookMarkValue.message}
                 </p>
               )}
-            </div> */}
+            </div>
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
                 htmlFor=""
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
-                Task Description
+                Bookmark Description
               </label>
               <textarea
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
                 rows={5}
-                {...register("taskDesc", {
-                  required: "Task Description is required",
+                {...register("bookMarkDesc", {
+                  required: "Bookmark Description is required",
                 })}
               ></textarea>
-              {errors.taskDesc && (
+              {errors.bookMarkDesc && (
                 <p className="text-[tomato] text-xs">
-                  {errors.taskDesc.message}
+                  {errors.bookMarkDesc.message}
                 </p>
               )}
             </div>
@@ -119,7 +125,7 @@ export default function AddTask() {
         </div>
         <div className="flex justify-end items-center mt-5">
           <button className="bg-[#407BFF] text-[white] px-[40px] py-[12px] rounded-[3px]">
-            Submit
+            {addTaskMutation.isPending ? "Please wait..." : "Submit"}
           </button>
         </div>
       </form>

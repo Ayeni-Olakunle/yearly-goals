@@ -11,6 +11,8 @@ import { IoIosNotifications } from "react-icons/io";
 import { IoMdPerson } from "react-icons/io";
 import { RiLogoutBoxLine } from "react-icons/ri";
 import { useRouter, usePathname } from "next/navigation";
+import { MdBookmarkAdd } from "react-icons/md";
+import { FaBookmark } from "react-icons/fa";
 
 interface navLinks {
   id: string;
@@ -41,6 +43,18 @@ export default function Navbar() {
       name: "All Tasks",
       icon: <FaTasks />,
       link: "/user/all-tasks",
+    },
+    {
+      id: "8",
+      name: "Bookmark",
+      icon: <FaBookmark />,
+      link: "/user/bookmark",
+    },
+    {
+      id: "8",
+      name: "Add Bookmark",
+      icon: <MdBookmarkAdd />,
+      link: "/user/add-bookmark",
     },
     {
       id: "4",
@@ -81,7 +95,7 @@ export default function Navbar() {
           alt="Not Available"
           className="h-[60px] rounded-[10px]"
         />
-        <span className="font-[Inter] text-[25px] font-bold leading-[30.26px] text-left text-[#FFFFFF]">
+        <span className=" text-[25px] font-bold leading-[30.26px] text-left text-[#FFFFFF]">
           Emmy
         </span>
       </div>
@@ -92,7 +106,7 @@ export default function Navbar() {
             <li key={index}>
               <Link
                 href={item.link}
-                className={`flex justify-start items-center gap-[10px] p-[17px] rounded-tl-none rounded-br-[10px] rounded-tr-[10px] rounded-bl-none font-[Inter] text-lg font-semibold leading-[21.78px] text-left  ${
+                className={`flex justify-start items-center gap-[10px] p-[17px] rounded-tl-none rounded-br-[10px] rounded-tr-[10px] rounded-bl-none  text-lg font-semibold leading-[21.78px] text-left  ${
                   path === item.link
                     ? "text-[#407bff] bg-[white]"
                     : "text-[white] bg-[#407bff]"
@@ -108,7 +122,7 @@ export default function Navbar() {
 
       <div className="mt-[50px]">
         <button
-          className="font-[Inter] text-[15px] font-medium leading-[27.84px] text-left flex justify-start items-center gap-[10px] text-[white] w-[fit-content] px-[40px] py-[0] mb-[20px]"
+          className=" text-[15px] font-medium leading-[27.84px] text-left flex justify-start items-center gap-[10px] text-[white] w-[fit-content] px-[40px] py-[0] mb-[20px]"
           type="button"
           onClick={logout}
         >

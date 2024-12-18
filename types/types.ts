@@ -68,3 +68,24 @@ export interface addGoals {
     status: string;
   }
   
+  export interface bookMarkProps {
+    bookMarkName: string;
+    bookMarkLink: string;
+    bookMarkValue: string;
+    bookMarkDesc: string;
+    createdAt: string;
+    updatedAt: string;
+  }
+
+  export interface bookDetail {
+    bookMarkName: string;
+    bookMarkLink: string;
+    bookMarkValue: string;
+    bookMarkDesc: string;
+    createdAt: string;
+    updatedAt: string;
+    _id: string;
+    onHide: () => void;
+    show: boolean;
+  }
+  

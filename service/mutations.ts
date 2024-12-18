@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { LoginType, addGoals, editGoal, addTask, taskDetails } from "@/types/types";
-import { userLogin, allGoals, addGoal, editGoalAxios, deleteGoal, addTasks, deleteTask , editTaskAxios } from "./api";
+import { LoginType, addGoals, editGoal, addTask, taskDetails, bookDetail, bookMarkProps } from "@/types/types";
+import { userLogin, allGoals, addGoal, editGoalAxios, deleteGoal, addTasks, deleteTask , editTaskAxios, editBookmarkAxios, deleteBookMark, addBookMark } from "./api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -36,6 +36,28 @@ export function allGoal() {
     return useQuery({
         queryKey: ["all-goals"],
         queryFn: allGoals,
+    })
+};
+
+export function addBookMarkMut(reset: () => void) {
+    return useMutation({
+        mutationFn: (data: bookMarkProps) => addBookMark(data),
+        onMutate: () => {
+            console.log("Mutate");
+        },
+
+        onError: () => {
+            toast.error("Opps something went wrong");
+        },
+
+        onSuccess: () => {
+            toast.success("Bookmark Created Successfully");
+            reset();
+        },
+
+        onSettled: () => {
+            console.log("Settled")
+        }
     })
 };
 
@@ -94,6 +116,30 @@ export function deleteTaskMut(id:string, close: () => void) {
         onSuccess: () => {
             toast.success("Task deleted successfully");
             queryClient.invalidateQueries({ queryKey: ["all-tasks"] });
+            close()
+        },
+
+        onError: () => {
+            toast.error("Opps something went wrong");
+        },
+
+        onSettled: () => {
+            console.log("Settled")
+        }
+    })
+};
+
+export function deleteBookMarkMut(id:string, close: () => void) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: () => deleteBookMark(id),
+        onMutate: () => {
+            console.log("Mutate");
+        },
+
+        onSuccess: () => {
+            toast.success("Bookmark deleted successfully");
+            queryClient.invalidateQueries({ queryKey: ["all-bookmark"] });
             close()
         },
 
@@ -171,6 +217,31 @@ export function editTaskMut(id:string, close: () => void) {
         onSuccess: () => {
             toast.success("Task updated successfully");
             queryClient.invalidateQueries({ queryKey: ["all-tasks"] });
+            close()
+        },
+
+        onSettled: () => {
+            console.log("Settled")
+            
+        }
+    })
+};
+
+export function editBookmarkAxiosMut(id:string, close: () => void) {
+    const queryClient = useQueryClient();
+    return useMutation({
+        mutationFn: (data: bookDetail) => editBookmarkAxios(data, id),
+        onMutate: () => {
+            console.log("Mutate");
+        },
+
+        onError: () => {
+            toast.error("Opps something went wrong");
+        },
+
+        onSuccess: () => {
+            toast.success("Bookmark updated successfully");
+            queryClient.invalidateQueries({ queryKey: ["all-bookmark"] });
             close()
         },
 

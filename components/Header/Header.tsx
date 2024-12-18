@@ -8,12 +8,14 @@ export default function Header() {
   const path = usePathname();
   return (
     <div className="flex justify-between items-center px-[30px] py-[15px] [border-bottom:1px_solid_#CECECE]">
-      <h1 className="font-[Inter] text-3xl font-bold leading-[36.31px] text-left">
+      <h1 className=" text-3xl font-bold leading-[36.31px] text-left">
         {path === "/user" && "Dashboard"}
         {path === "/user/all-goals" && "All Goals"}
         {path === "/user/all-tasks" && "All Tasks"}
         {path === "/user/add-goals" && "Add Goals"}
         {path === "/user/add-task" && "Add Task"}
+        {path === "/user/bookmark" && "Bookmark"}
+        {path === "/user/add-bookmark" && "Add Bookmark"}
         {path === "/user/notifications" && "Notification"}
       </h1>
       <div className="flex justify-center items-center gap-[20px]">
@@ -21,10 +23,10 @@ export default function Header() {
           AE
         </h1>
         <div>
-          <h4 className="font-[Inter] text-sm font-bold leading-[24.2px] text-left">
+          <h4 className=" text-sm font-bold leading-[24.2px] text-left">
             Hello
           </h4>
-          <p className="font-[Inter] text-base font-medium leading-[24.2px] text-left text-[#747474]">
+          <p className=" text-base font-medium leading-[24.2px] text-left text-[#747474]">
             Ayeni Emmanuel
           </p>
         </div>

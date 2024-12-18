@@ -9,16 +9,16 @@ export default function Page() {
         <form action="">
           <div className="flex gap-[20px] items-center justify-start">
             <img src={logo.src} alt="Available" className="w-[70px]" />
-            <span className="font-[Inter] text-[22px] font-bold leading-[30.26px] text-left text-[#407bff]">
+            <span className=" text-[22px] font-bold leading-[30.26px] text-left text-[#407bff]">
               Emmy
             </span>
           </div>
 
           <div className="flex justify-start items-start flex-col my-[15px]">
-            <h1 className="font-[Inter] text-[17px] font-bold leading-[30.26px] text-left text-[#407BFF]">
+            <h1 className=" text-[17px] font-bold leading-[30.26px] text-left text-[#407BFF]">
               Reset Password
             </h1>
-            <p className="font-[Inter] text-[15px] font-normal leading-[30px] text-left text-[#7F7F7F]">
+            <p className=" text-[15px] font-normal leading-[30px] text-left text-[#7F7F7F]">
               Thank you for registering with us! To complete your password
               reset, please click on reset password
             </p>

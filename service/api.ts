@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginType, goalsType, addGoals, editGoal, taskGraph, addTask, taskDetails } from "@/types/types"
+import { LoginType, goalsType, addGoals, editGoal, taskGraph, addTask, taskDetails, bookMarkProps, bookDetail } from "@/types/types"
 
 
 const axiosInstance = axios.create({baseURL: process.env.NEXT_PUBLIC_BaseURL})
@@ -49,6 +49,12 @@ export const allGoals = async () => {
     )
 }
 
+export const allBookMark = async () => {
+    return(
+        await axiosInstanceAuth.get<bookMarkProps[], any>("/bookmark")
+    )
+}
+
 export const allTask = async () => {
     return(
         await axiosInstanceAuth.get<addTask[], any>("/task")
@@ -68,7 +74,25 @@ export const addTasks = async (data: addTask) => {
     )
 }
 
+export const addBookMark = async (data: bookMarkProps) => {
+    return(
+        await axiosInstanceAuth.post("/bookmark/create", data)
+    )
+}
+
 export const editGoalAxios = async (data: editGoal, id:string) => {
+    return(
+        await axiosInstanceAuth.patch(`/growth/edit-growth/${id}`, data)
+    )
+}
+
+export const editBookmarkAxios = async (data: bookDetail, id:string) => {
+    return(
+        await axiosInstanceAuth.patch(`/bookmark/edit-bookmark/${id}`, data)
+    )
+}
+
+export const bookmarkGoalAxios = async (data: bookMarkProps, id:string) => {
     return(
         await axiosInstanceAuth.patch(`/growth/edit-growth/${id}`, data)
     )
@@ -89,6 +113,12 @@ export const deleteGoal = async (id:string) => {
 export const deleteTask = async (id:string) => {
     return(
         await axiosInstanceAuth.delete(`/task/deleteTask/${id}`)
+    )
+}
+
+export const deleteBookMark = async (id:string) => {
+    return(
+        await axiosInstanceAuth.delete(`/bookmark/delete/${id}`)
     )
 }
 
