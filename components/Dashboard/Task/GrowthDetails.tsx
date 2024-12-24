@@ -12,7 +12,10 @@ export default function GrowthDetails() {
       <div className="border-[1.5px] border-solid border-[#D9D9D9] overflow-hidden rounded-[5px]">
         {data?.data?.graph.map((item: taskGraph, index: number) => {
           return (
-            <div className="flex justify-between items-center  text-sm font-medium leading-[26.63px] text-left p-[15px] [border-bottom:1px_solid_#D9D9D9]">
+            <div
+              className="flex justify-between items-center  text-sm font-medium leading-[26.63px] text-left p-[15px] [border-bottom:1px_solid_#D9D9D9]"
+              key={index}
+            >
               <h1 className="text-[#646060]">{item.type}</h1>
               <p className="text-[#407bff]">{item.total} Task</p>
             </div>

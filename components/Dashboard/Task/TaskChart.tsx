@@ -1,8 +1,8 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
-import { allTaskGraph, allGrowthGraphsFn } from "@/service/query";
-import { alltaskGraph, taskGraph } from "@/types/types";
+import { allTaskGraph } from "@/service/query";
+import { taskGraph } from "@/types/types";
 
 interface ChartType {
   getContext: any;

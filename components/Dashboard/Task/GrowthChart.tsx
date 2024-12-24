@@ -1,8 +1,8 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { Chart } from "chart.js/auto";
-import { allTaskGraph, allGrowthGraphsFn } from "@/service/query";
-import { alltaskGraph, taskGraph } from "@/types/types";
+import { allGrowthGraphsFn } from "@/service/query";
+import { taskGraph } from "@/types/types";
 
 interface ChartType {
   getContext: any;
@@ -11,7 +11,7 @@ interface ChartType {
 
 export default function GrowthChart() {
   const chartRef = useRef<ChartType | null>(null);
-  const { data, isLoading, isSuccess } = allGrowthGraphsFn();
+  const { data } = allGrowthGraphsFn();
 
   useEffect(() => {
     if (chartRef.current) {
