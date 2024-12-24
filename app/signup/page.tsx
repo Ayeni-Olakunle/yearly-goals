@@ -71,9 +71,9 @@ export default function Page() {
               Phone Number
             </label>
             <input
-              type="password"
-              name="password"
-              id="password"
+              type="text"
+              name="text"
+              id="text"
               className="border-[1.5px] border-solid border-[#C7C7C7] w-full p-[10px] rounded-[5px] outline-[0] text-sm !text-[gray]"
               required
             />

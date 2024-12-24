@@ -16,9 +16,9 @@ export default function AllGoals() {
   const [position, setPosition] = useState<number>(0);
   const { data: allGoals = [], isLoading, isSuccess, isError } = allGoal();
 
-  if (isLoading) {
-    return <LoaderSpin />;
-  }
+    if (isLoading) {
+      return <LoaderSpin />;
+    }
 
   if (isError) {
     toast.error("Opps something went wrong");
