@@ -18,30 +18,30 @@ export default function Dashboard() {
   // }
 
   return (
-    <main className="p-[30px]">
-      <div className="flex justify-between align-top w-[100%] gap-4">
-        <div className="w-[70%]">
+    <main className="p-[30px] sm:p-[15px]">
+      <div className="flex justify-between align-top w-[100%] gap-4 sm:flex-col-reverse">
+        <div className="w-[70%] sm:w-full">
           <GrowthChart />
         </div>
-        <div className="w-[30%]">
+        <div className="w-[30%] sm:w-full">
           <GrowthDetails />
         </div>
       </div>
 
-      <div className="flex justify-between align-top w-[100%] gap-4 mt-8">
-        <div className="w-[70%]">
+      <div className="flex justify-between align-top w-[100%] gap-4 mt-8 sm:flex-col-reverse sm:mt-2">
+        <div className="w-[70%] sm:w-full">
           <TaskChart />
         </div>
-        <div className="w-[30%]">
+        <div className="w-[30%] sm:w-full">
           <TaskDetails />
         </div>
       </div>
 
-      <div className="flex justify-between align-top w-[100%] gap-4 mt-8 mb-[30px]">
-        <div className="w-[70%]">
+      <div className="flex justify-between align-top w-[100%] gap-4 mt-8 mb-[30px] sm:flex-col-reverse">
+        <div className="w-[70%] sm:w-full">
           <Notification />
         </div>
-        <div className="w-[30%]">
+        <div className="w-[30%] sm:w-full">
           <NotificationDetails />
         </div>
       </div>

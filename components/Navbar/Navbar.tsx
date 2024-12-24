@@ -14,6 +14,8 @@ import { useRouter, usePathname } from "next/navigation";
 import { MdBookmarkAdd } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa";
 import { FaFileAudio } from "react-icons/fa";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { MdOutlineClose } from "react-icons/md";
 
 interface navLinks {
   id: string;
@@ -25,6 +27,14 @@ interface navLinks {
 export default function Navbar() {
   const path = usePathname();
   const router = useRouter();
+  const client = useQueryClient();
+
+  const { data } = useQuery({
+    queryKey: ["sidebar"],
+    initialData: {
+      current: false,
+    },
+  });
 
   const NavLink: navLinks[] = [
     {
@@ -95,7 +105,26 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="w-[350px] bg-[#407BFF] h-full overflow-y-scroll">
+    <nav
+      className={`w-[350px] bg-[#407BFF] h-full overflow-y-scroll sm:absolute sm:z-[1] ${
+        data.current
+          ? "sm:w-[70%] sm:[transition:width_0.3s_linear]"
+          : "sm:w-0 sm:[transition:width_0.3s_linear]"
+      }`}
+    >
+      <p className="hidden justify-end p-[20px] text-[25px] text-[white] -mb-[55px] sm:flex">
+        <MdOutlineClose
+          className="text-3xl text-[#ffffff]"
+          onClick={() => {
+            client.setQueryData(["sidebar"], () => {
+              return {
+                current: false,
+              };
+            });
+          }}
+        />
+      </p>
+
       <div className="flex justify-start items-center px-[40px] py-[10px] gap-[20px] mt-[30px]">
         <img
           src={Logo.src}
