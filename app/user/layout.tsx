@@ -24,32 +24,32 @@ export default function RootLayout({
     return <Logout />;
   }
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setCheck(true);
-    }, 5000);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     setCheck(true);
+  //   }, 5000);
 
-    return () => clearTimeout(timeout);
-  }, []);
+  //   return () => clearTimeout(timeout);
+  // }, []);
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        {check ? (
+        {/* {check ? (
           !isLoggedIn() ? (
             <Logout />
-          ) : (
-            <main className="flex justify-start items-start h-screen overflow-hidden bg-[white]">
-              <Navbar />
-              <main className="w-full overflow-y-scroll h-screen">
-                <Header />
-                <div>{children}</div>
-              </main>
-            </main>
-          )
+          ) : ( */}
+        <main className="flex justify-start items-start h-screen overflow-hidden bg-[white]">
+          <Navbar />
+          <main className="w-full overflow-y-scroll h-screen">
+            <Header />
+            <div>{children}</div>
+          </main>
+        </main>
+        {/* )
         ) : (
           <Loader />
-        )}
+        )} */}
       </body>
     </html>
   );
