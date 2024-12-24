@@ -1,5 +1,5 @@
-import { allTaskGraph, allGrowthGraphsFn } from "@/service/query";
-import { alltaskGraph, taskGraph } from "@/types/types";
+import { allTaskGraph } from "@/service/query";
+import { TaskGraph } from "@/types/types";
 
 export default function TaskDetails() {
   const { data, isLoading, isSuccess } = allTaskGraph();
@@ -10,7 +10,7 @@ export default function TaskDetails() {
         Tasks Details
       </h1>
       <div className="border-[1.5px] border-solid border-[#D9D9D9] overflow-hidden rounded-[5px]">
-        {data?.data?.graph.map((item: taskGraph, index: number) => {
+        {data?.data?.graph.map((item: TaskGraph, index: number) => {
           return (
             <div
               className="flex justify-between items-center  text-sm font-medium leading-[26.63px] text-left p-[15px] [border-bottom:1px_solid_#D9D9D9]"

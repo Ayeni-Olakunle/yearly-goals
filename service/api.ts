@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginType, goalsType, addGoals, editGoal, taskGraph, addTask, taskDetails, bookMarkProps, bookDetail } from "@/types/types"
+import { LoginType, goalsType, addGoals, editGoal, GrowthData, addTask, taskDetails, bookMarkProps, bookDetail } from "@/types/types"
 
 
 const axiosInstance = axios.create({baseURL: process.env.NEXT_PUBLIC_BaseURL})
@@ -124,12 +124,12 @@ export const deleteBookMark = async (id:string) => {
 
 export const taskGraphs = async () => {
     return(
-        await axiosInstanceAuth.get<taskGraph[]>("/graph/all-task-status")
+        await axiosInstanceAuth.get("/graph/all-task-status")
     )
 }
 
 export const allGrowthGraphs = async () => {
     return(
-        await axiosInstanceAuth.get<taskGraph[]>("/graph/all-growth-status")
+        await axiosInstanceAuth.get("/graph/all-growth-status")
     )
 }

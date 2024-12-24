@@ -1,8 +1,8 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { Chart } from "chart.js/auto";
 import { allTaskGraph } from "@/service/query";
-import { taskGraph } from "@/types/types";
+import { TaskGraph } from "@/types/types";
 
 interface ChartType {
   getContext: any;
@@ -11,7 +11,7 @@ interface ChartType {
 
 export default function TaskChart() {
   const chartRef = useRef<ChartType | null>(null);
-  const { data, isLoading, isSuccess } = allTaskGraph();
+  const { data } = allTaskGraph();
 
   useEffect(() => {
     if (chartRef.current) {
@@ -24,13 +24,13 @@ export default function TaskChart() {
       const newChart = new Chart(context, {
         type: "bar",
         data: {
-          labels: data?.data?.graph.map((items: taskGraph) => items.type),
+          labels: data?.data?.graph.map((items: TaskGraph) => items.type),
           datasets: [
             {
               barPercentage: 0.9,
               barThickness: 50,
               label: "",
-              data: data?.data?.graph.map((items: taskGraph) => items.total),
+              data: data?.data?.graph.map((items: TaskGraph) => items.total),
               backgroundColor: [
                 "rgb(255, 99, 132, 0.2)",
                 "rgb(255, 159, 64, 0.2)",

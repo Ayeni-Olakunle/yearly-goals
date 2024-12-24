@@ -52,14 +52,14 @@ export interface addGoals {
 
 
   
-  export interface taskGraph {
-    type: string
-    total: number
+  export interface TaskGraph {
+    type: string;
+    total: number;
   }
   
-  export interface alltaskGraph {
-    graph: Array<taskGraph>
-    totalTask: number
+  export interface GrowthData {
+    graph: TaskGraph[];
+    total: number;
   }
 
   export interface taskDetails {

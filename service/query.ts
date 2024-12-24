@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { taskGraphs, allGrowthGraphs, allTask, allBookMark } from "./api";
+import { GrowthData } from "@/types/types";
 
 export function allTaskGraph() {
     return useQuery({
@@ -15,6 +16,7 @@ export function allGrowthGraphsFn() {
         queryFn: allGrowthGraphs,
     })
 };
+
 
 export function allTaskFn() {
     return useQuery({
