@@ -86,7 +86,7 @@ export default function AllBookMark() {
             ) : (
               filterList.map((item: bookMarkProps, index: number) => {
                 return (
-                  <tr className="[border-bottom:1px_solid_#CECECE]">
+                  <tr className="[border-bottom:1px_solid_#CECECE]" key={index}>
                     <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
                       {index + 1}
                     </td>
