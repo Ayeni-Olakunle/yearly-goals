@@ -16,6 +16,7 @@ export default function Header() {
         {path === "/user/add-task" && "Add Task"}
         {path === "/user/bookmark" && "Bookmark"}
         {path === "/user/add-bookmark" && "Add Bookmark"}
+        {path === "/user/audio-book" && "Audio Book"}
         {path === "/user/notifications" && "Notification"}
       </h1>
       <div className="flex justify-center items-center gap-[20px]">

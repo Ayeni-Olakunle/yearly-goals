@@ -13,6 +13,7 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 import { useRouter, usePathname } from "next/navigation";
 import { MdBookmarkAdd } from "react-icons/md";
 import { FaBookmark } from "react-icons/fa";
+import { FaFileAudio } from "react-icons/fa";
 
 interface navLinks {
   id: string;
@@ -51,7 +52,13 @@ export default function Navbar() {
       link: "/user/bookmark",
     },
     {
-      id: "8",
+      id: "10",
+      name: "Audio Book",
+      icon: <FaFileAudio />,
+      link: "/user/audio-book",
+    },
+    {
+      id: "9",
       name: "Add Bookmark",
       icon: <MdBookmarkAdd />,
       link: "/user/add-bookmark",

@@ -108,18 +108,20 @@ export default function AllTask() {
         </table>
       </div>
 
-      <TasksModal
-        show={modalShow}
-        onHide={() => {
-          setModalShow(false);
-        }}
-        // endDate={filterList[position].updatedAt}
-        // startDate={filterList[position].createdAt}
-        taskName={allTasks.data[position].taskName}
-        taskDesc={allTasks.data[position].taskDesc}
-        status={allTasks.data[position].status}
-        _id={allTasks.data[position]._id}
-      />
+      {allTasks?.length > 0 && (
+        <TasksModal
+          show={modalShow}
+          onHide={() => {
+            setModalShow(false);
+          }}
+          // endDate={filterList[position].updatedAt}
+          // startDate={filterList[position].createdAt}
+          taskName={allTasks.data[position].taskName}
+          taskDesc={allTasks.data[position].taskDesc}
+          status={allTasks.data[position].status}
+          _id={allTasks.data[position]._id}
+        />
+      )}
     </section>
   );
 }
