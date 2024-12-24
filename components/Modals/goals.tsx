@@ -39,7 +39,7 @@ export default function GoalsModal(props: goalDetail) {
           {...props}
           className="absolute top-[0] w-full left-[0] h-screen flex justify-center items-start px-[0] py-[50px] bg-[#00000082] overflow-y-scroll"
         >
-          <div className="w-[500px] bg-[white] h-auto rounded-[5px]">
+          <div className="w-[500px] bg-[white] h-auto rounded-[5px] sm:w-[90%]">
             <h1 className="flex justify-between items-center p-[20px]">
               <span className="text-[22px] font-bold">Goals Details</span>
               <span onClick={props?.onHide}>

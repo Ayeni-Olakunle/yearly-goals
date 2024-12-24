@@ -43,7 +43,7 @@ export default function AllTask() {
   return (
     <section>
       <div className="flex justify-between items-center">
-        <div className="border-[1.5px] border-solid border-[#B3B3B3] w-[350px] flex justify-between items-center rounded-[11px] overflow-hidden px-[10px] py-[0] text-[gray]">
+        <div className="border-[1.5px] border-solid border-[#B3B3B3] w-[350px] flex justify-between items-center rounded-[11px] overflow-hidden px-[10px] py-[0] text-[gray] sm:w-3/5">
           <input
             type="search"
             placeholder="Search for goals"
@@ -95,8 +95,8 @@ export default function AllTask() {
                       <IoIosArrowDropdownCircle
                         className="cursor-pointer"
                         onClick={() => {
-                          setPosition(index);
                           setModalShow(true);
+                          setPosition(index);
                         }}
                       />
                     </td>
@@ -108,7 +108,7 @@ export default function AllTask() {
         </table>
       </div>
 
-      {allTasks?.length > 0 && (
+      {filterList?.length > 0 && (
         <TasksModal
           show={modalShow}
           onHide={() => {

@@ -147,6 +147,13 @@ export default function Navbar() {
                     ? "text-[#407bff] bg-[white]"
                     : "text-[white] bg-[#407bff]"
                 }`}
+                onClick={() => {
+                  client.setQueryData(["sidebar"], () => {
+                    return {
+                      current: false,
+                    };
+                  });
+                }}
               >
                 {item.icon}
                 {item.name}
