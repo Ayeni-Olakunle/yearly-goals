@@ -103,7 +103,7 @@ export default function Navbar() {
           className="h-[60px] rounded-[10px]"
         />
         <span className=" text-[25px] font-bold leading-[30.26px] text-left text-[#FFFFFF]">
-          Emmy
+          EM-Note
         </span>
       </div>
 
