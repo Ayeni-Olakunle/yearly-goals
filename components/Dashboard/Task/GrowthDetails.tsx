@@ -5,7 +5,7 @@ export default function GrowthDetails() {
   const { data } = allGrowthGraphsFn();
 
   return (
-    <section className="mt-[4.7em]">
+    <section className="mt-[4.7em] sm:mt-4">
       <h1 className=" text-[17px] font-bold leading-[22.99px] text-left text-[#407bff] mb-[5px]">
         Growth Details
       </h1>

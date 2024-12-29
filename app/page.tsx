@@ -84,7 +84,7 @@ export default function Login() {
             type="submit"
             className="w-full  text-[17px] font-medium leading-[26.63px] bg-[#407bff] mt-[10px] p-[10px] rounded-[5px] mb-[10px] text-[white]"
           >
-            Submit
+            {userLoginMutation.isPending ? "Please wait..." : "Submit"}
           </button>
           <button
             type="submit"

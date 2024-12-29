@@ -13,7 +13,7 @@ export default function Header() {
     <div className="flex justify-between items-center px-[30px] py-[15px] [border-bottom:1px_solid_#CECECE] sm:p-[15px]">
       <div className="flex items-center gap-[12px]">
         <HiMenuAlt2
-          className="text-3xl text-[gray]"
+          className="text-3xl text-[gray] hidden sm:block"
           onClick={() => {
             client.setQueryData(["sidebar"], () => {
               return {
@@ -22,7 +22,7 @@ export default function Header() {
             });
           }}
         />
-        <h1 className=" text-3xl font-bold leading-[36.31px] text-left">
+        <h1 className=" text-3xl font-bold leading-[36.31px] text-left sm:text-[1.5rem]">
           {path === "/user" && "Dashboard"}
           {path === "/user/all-goals" && "All Goals"}
           {path === "/user/all-tasks" && "All Tasks"}
@@ -36,14 +36,18 @@ export default function Header() {
       </div>
       <div className="flex justify-center items-center gap-[20px] sm:gap-3">
         <h1 className="border-[2px] border-solid border-[#407bff] rounded-[50px] flex justify-center items-center bg-[#407bff] text-[white] w-[40px] h-[40px] text-[15px]">
-          AE
+          {`${localStorage.getItem("firstName")?.charAt(0)} ${localStorage
+            .getItem("lastName")
+            ?.charAt(0)}`}
         </h1>
         <div className="sm:hidden">
           <h4 className=" text-sm font-bold leading-[24.2px] text-left">
             Hello
           </h4>
           <p className=" text-base font-medium leading-[24.2px] text-left text-[#747474]">
-            Ayeni Emmanuel
+            {`${localStorage.getItem("firstName")} ${localStorage.getItem(
+              "lastName"
+            )}`}
           </p>
         </div>
         <MdOutlineArrowDropDown className="text-[#747474] text-[25px]" />

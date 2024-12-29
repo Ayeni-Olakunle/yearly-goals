@@ -2,10 +2,10 @@ import { allTaskGraph } from "@/service/query";
 import { TaskGraph } from "@/types/types";
 
 export default function TaskDetails() {
-  const { data, isLoading, isSuccess } = allTaskGraph();
+  const { data } = allTaskGraph();
 
   return (
-    <section className="mt-[4.7em]">
+    <section className="mt-[4.7em] sm:mt-4">
       <h1 className=" text-[17px] font-bold leading-[22.99px] text-left text-[#407bff] mb-[5px]">
         Tasks Details
       </h1>

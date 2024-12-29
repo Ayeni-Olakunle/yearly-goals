@@ -49,8 +49,8 @@ export default function AllBookMark() {
   };
   return (
     <section>
-      <div className="flex justify-between items-center">
-        <div className="border-[1.5px] border-solid border-[#B3B3B3] w-[350px] flex justify-between items-center rounded-[11px] overflow-hidden px-[10px] py-[0] text-[gray]">
+      <div className="flex justify-between items-center sm:grid sm:grid-cols-[1fr_1fr]">
+        <div className="border-[1.5px] border-solid border-[#B3B3B3] w-[350px] flex justify-between items-center rounded-[11px] overflow-hidden px-[10px] py-[0] text-[gray] sm:w-[90%]">
           <input
             type="search"
             placeholder="Search for bookmark"
@@ -68,7 +68,7 @@ export default function AllBookMark() {
           Add Bookmark
         </Link>
       </div>
-      <div className="mt-[40px] rounded-[5px] overflow-hidden">
+      <div className="mt-[40px] rounded-[5px] overflow-hidden sm:mt-[25px] sm:overflow-x-scroll">
         <table className="w-full">
           <thead className="bg-[#407BFF]  text-[13px] font-normal leading-[26.63px] text-center text-[white]">
             <tr className="bg-[#407BFF]  text-[13px] font-normal leading-[26.63px] text-center text-[white]">

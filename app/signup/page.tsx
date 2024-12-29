@@ -113,10 +113,17 @@ export default function Page() {
 
           <button
             type="submit"
-            className="w-full  text-[17px] font-medium leading-[26.63px] bg-[#407bff] mt-[10px] p-[10px] rounded-[5px] mb-[10px]"
+            className="w-full  text-[17px] font-medium leading-[26.63px] bg-[#407bff] text-white mt-[10px] p-[10px] rounded-[5px] mb-[10px]"
           >
             Submit
           </button>
+          <p className="text-center text-[gray] text-[1rem]">or</p>
+          <Link
+            href={"/"}
+            className="text-center text-[#407bff] text-[1rem] block border-[2px] border-solid border-[#407bff] p-[10px] mt-[10px] rounded-[7px]"
+          >
+            Login
+          </Link>
         </form>
       </div>
     </main>

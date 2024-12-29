@@ -18,9 +18,9 @@ const Page = () => {
       const availableVoices = window.speechSynthesis.getVoices();
       setVoices(availableVoices);
 
-      if (availableVoices.length > 0) {
-        setSelectedVoice(availableVoices[0].name);
-      }
+      // if (availableVoices.length > 0) {
+      //   setSelectedVoice(availableVoices[0].name);
+      // }
     };
 
     fetchVoices();
@@ -41,8 +41,8 @@ const Page = () => {
       if (!isSpeaking) {
         const utterances = text.split(/\.\s*/).map((sentence) => {
           const utterance = new SpeechSynthesisUtterance(sentence);
-          const voice = voices.find((v) => v.name === selectedVoice);
-          if (voice) utterance.voice = voice;
+          // const voice = voices.find((v) => v.name === selectedVoice);
+          // if (voice) utterance.voice = voice;
           return utterance;
         });
 
@@ -90,7 +90,7 @@ const Page = () => {
 
   return (
     <div className="w-full flex justify-center items-center">
-      <div className="flex justify-center items-center flex-col gap-[20px] w-3/5 mt-[50px]">
+      <div className="flex justify-center items-center flex-col gap-[20px] w-3/5 mt-[50px] sm:w-[90%] sm:mt-[10px]">
         <textarea
           rows={5}
           placeholder="Enter text here..."
@@ -98,7 +98,7 @@ const Page = () => {
           onChange={(e) => setText(e.target.value)}
           className="w-full bg-[rgb(239,_239,_239)] p-[15px] rounded-[5px] h-[400px] outline-none"
         ></textarea>
-        <div className="flex gap-[15px] items-center">
+        {/* <div className="flex gap-[15px] items-center">
           <label htmlFor="voice-select" className="text-[#494949]">
             Select Voice:
           </label>
@@ -114,9 +114,9 @@ const Page = () => {
               </option>
             ))}
           </select>
-        </div>
+        </div> */}
 
-        <div className="w-full flex justify-between items-center">
+        <div className="w-full flex justify-between items-center sm:gap-[20px]">
           <button onClick={handleToggleSpeak}>
             {!isSpeaking || isPaused ? (
               <FaRegCirclePlay className="text-[40px] text-[#407bff]" />
