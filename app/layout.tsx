@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="icon" href={logo.src} type="image/png" sizes="<generated>" />
+      <link rel="icon" href={logo.src} sizes="any" />
       <body className={inter.className}>
         <QueryProvider>{children}</QueryProvider>
         <ToastContainer
