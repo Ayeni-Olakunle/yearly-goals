@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { LoginType, addGoals, editGoal, addTask, taskDetails, bookDetail, bookMarkProps } from "@/types/types";
-import { userLogin, allGoals, addGoal, editGoalAxios, deleteGoal, addTasks, deleteTask , editTaskAxios, editBookmarkAxios, deleteBookMark, addBookMark } from "./api";
+import { LoginType, addGoals, editGoal, addTask, taskDetails, bookDetail, bookMarkProps, signup2 } from "@/types/types";
+import { userLogin, allGoals, addGoal, editGoalAxios, deleteGoal, addTasks, deleteTask , editTaskAxios, editBookmarkAxios, deleteBookMark, addBookMark, userSignuo } from "./api";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 
@@ -24,6 +24,30 @@ export function useLogin() {
             localStorage.setItem("lastName", data.data.lastName)
             toast.success("Successfully Login");
             route.push("/user")
+        },
+
+        onSettled: () => {
+            console.log("Settled")
+        }
+    })
+};
+
+export function useSignupFn() {
+    const route = useRouter();
+    return useMutation({
+        mutationFn: (data: signup2) => userSignuo(data),
+        onMutate: () => {
+            console.log("Mutate");
+        },
+
+        onError: () => {
+            console.log("Error");
+            toast.error("Opps something went wrong");
+        },
+
+        onSuccess: (data) => {
+            toast.success("Account created successfully");
+            route.push("/")
         },
 
         onSettled: () => {

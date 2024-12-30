@@ -89,3 +89,21 @@ export interface addGoals {
     show: boolean;
   }
   
+  
+  export interface signup {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    confirmPassword: string;
+    password: string;
+  }
+  
+  export interface signup2 {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    password: string;
+  }
+  

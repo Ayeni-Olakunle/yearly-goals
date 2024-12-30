@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginType, goalsType, addGoals, editGoal, GrowthData, addTask, taskDetails, bookMarkProps, bookDetail } from "@/types/types"
+import { LoginType, goalsType, addGoals, editGoal, GrowthData, addTask, taskDetails, bookMarkProps, bookDetail, signup2 } from "@/types/types"
 
 
 const axiosInstance = axios.create({baseURL: process.env.NEXT_PUBLIC_BaseURL})
@@ -40,6 +40,12 @@ const axiosInstanceAuth = axios.create({
 export const userLogin = async (data: LoginType) => {
     return(
         await axiosInstance.post("/auth/login", data)
+    )
+}
+
+export const userSignuo = async (data: signup2) => {
+    return(
+        await axiosInstance.post("/auth/signup", data)
     )
 }
 
