@@ -9,7 +9,7 @@ import { allBookMarkFn } from "@/service/query";
 import LoaderSpin from "../Loader/loader";
 import { toast } from "react-toastify";
 import { bookMarkProps } from "@/types/types";
-import { formatDate } from "@/helper/helper";
+// import { formatDate } from "@/helper/helper";
 
 export default function AllBookMark() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -47,6 +47,15 @@ export default function AllBookMark() {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
+
+  const handleCopy = async (e:string) => {
+    try {
+      await navigator.clipboard.writeText(e); 
+      toast.success("Copied");
+    } catch (err) {
+      toast.error("Failed to copy text")
+    }
+  };
   return (
     <section>
       <div className="flex justify-between items-center sm:grid sm:grid-cols-[1fr_1fr]">
@@ -61,7 +70,7 @@ export default function AllBookMark() {
           <IoIosSearch />
         </div>
         <Link
-          href={"/user/add-task"}
+          href={"/user/add-bookmark"}
           className="flex gap-[15px]  text-[15px] font-semibold leading-[21.78px] text-left bg-[#407bff] text-[white] items-center px-[20px] py-[12px] rounded-[5px]"
         >
           <FiPlus />
@@ -76,7 +85,7 @@ export default function AllBookMark() {
               <th className="p-[12px]">Bookmark</th>
               <th className="p-[12px]">Bookmark Link</th>
               <th className="p-[12px]">Bookmark Value</th>
-              <th className="p-[12px]">Date</th>
+              {/* <th className="p-[12px]">Date</th> */}
               <th className="p-[12px]">Bookmark Details</th>
             </tr>
           </thead>
@@ -93,15 +102,15 @@ export default function AllBookMark() {
                     <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
                       {item.bookMarkName}
                     </td>
-                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    <td className="p-[12px] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] cursor-pointer" onClick={() => handleCopy(item.bookMarkLink)}>
                       {item.bookMarkLink}
                     </td>
-                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] cursor-pointer" onClick={() => handleCopy(item.bookMarkValue)}>
                       {item.bookMarkValue}
                     </td>
-                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
+                    {/* <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
                       {formatDate(item.createdAt)}
-                    </td>
+                    </td> */}
                     <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] flex justify-center text-xl">
                       <IoIosArrowDropdownCircle
                         className="cursor-pointer"
@@ -125,16 +134,18 @@ export default function AllBookMark() {
           setModalShow(false);
         }}
         updatedAt={
-          allBookMark.length > 0 ? allBookMark[position].updatedAt : "N/A"
+          allBookMark.length > 0 ? filterList[position].updatedAt : "N/A"
         }
         createdAt={
           allBookMark.length > 0 ? allBookMark[position].createdAt : "N/A"
         }
-        bookMarkName={
-          allBookMark.length > 0
-            ? allBookMark.data[position].bookMarkName
-            : "N/A"
+        bookMarkName={allBookMark.data[position].bookMarkName || "N/A"
         }
+        // bookMarkName={
+        //   allBookMark.length > 0
+        //     ? allBookMark.data[position].bookMarkName
+        //     : "N/A"
+        // }
         bookMarkDesc={
           allBookMark.length > 0
             ? allBookMark.data[position].bookMarkDesc

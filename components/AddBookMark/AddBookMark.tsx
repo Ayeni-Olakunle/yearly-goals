@@ -23,7 +23,7 @@ export default function AddBookMark() {
           Add Bookmark
         </h1>
         <p className=" text-[15px] font-normal leading-[24.2px] text-left text-[#8D8D8D]">
-          Please take your goals very serious
+          Please take your bookmark very serious
         </p>
       </div>
       <form onSubmit={handleSubmit(handleTask)}>
@@ -31,7 +31,7 @@ export default function AddBookMark() {
           <div>
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
-                htmlFor="GoalName"
+                htmlFor="bookMarkName"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Bookmark Name
@@ -52,44 +52,30 @@ export default function AddBookMark() {
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
-                htmlFor="GoalName"
+                htmlFor="bookMarkLink"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Bookmark Link
               </label>
               <input
                 type="text"
-                {...register("bookMarkLink", {
-                  required: "Bookmark Link is required",
-                })}
+                {...register("bookMarkLink")}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
-              {errors.bookMarkLink && (
-                <p className="text-[tomato] text-xs">
-                  {errors.bookMarkLink.message}
-                </p>
-              )}
             </div>
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
-                htmlFor="GoalName"
+                htmlFor="bookMarkValue"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Bookmark Value
               </label>
               <input
                 type="text"
-                {...register("bookMarkValue", {
-                  required: "Bookmark Value is required",
-                })}
+                {...register("bookMarkValue")}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
-              {errors.bookMarkValue && (
-                <p className="text-[tomato] text-xs">
-                  {errors.bookMarkValue.message}
-                </p>
-              )}
             </div>
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
@@ -102,15 +88,8 @@ export default function AddBookMark() {
               <textarea
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
                 rows={5}
-                {...register("bookMarkDesc", {
-                  required: "Bookmark Description is required",
-                })}
+                {...register("bookMarkDesc")}
               ></textarea>
-              {errors.bookMarkDesc && (
-                <p className="text-[tomato] text-xs">
-                  {errors.bookMarkDesc.message}
-                </p>
-              )}
             </div>
             {/* <div className="flex gap-[10px] items-center justify-start">
               <input type="checkbox" name="" id="" />
