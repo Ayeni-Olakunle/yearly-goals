@@ -83,17 +83,9 @@ export default function GoalsModal(props: goalDetail) {
                 <input
                   type="text"
                   defaultValue={props?.goalLink}
-                  {...register("goalLink", {
-                    required: "Goal Link is required",
-                  })}
+                  {...register("goalLink")}
                   className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
                 />
-                {errors.goalLink && (
-                  <p className="text-[tomato] text-xs">
-                    {errors.goalLink.message}
-                    {}
-                  </p>
-                )}
               </div>
 
               <div className="flex justify-start items-start flex-col px-[0] py-[10px]">
@@ -110,7 +102,7 @@ export default function GoalsModal(props: goalDetail) {
                     required: "Status is required",
                   })}
                 >
-                  {/* <option value={props?.status}>{props?.status}</option> */}
+                  <option value={props?.status}>{props?.status}</option>
                   <option value="In Progress">In Progress</option>
                   <option value="Completed">Completed</option>
                   <option value="Cancel">Cancel</option>
@@ -133,16 +125,9 @@ export default function GoalsModal(props: goalDetail) {
                 <textarea
                   rows={5}
                   defaultValue={props?.goalDesc}
-                  {...register("goalDesc", {
-                    required: "Goals Desc is required",
-                  })}
+                  {...register("goalDesc")}
                   className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
                 ></textarea>
-                {errors.goalDesc && (
-                  <p className="text-[tomato] text-xs">
-                    {errors.goalDesc.message}
-                  </p>
-                )}
               </div>
 
               <div className="flex justify-start items-start flex-col px-[0] py-[10px]">
