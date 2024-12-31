@@ -102,10 +102,16 @@ export default function AllBookMark() {
                     <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
                       {item.bookMarkName}
                     </td>
-                    <td className="p-[12px] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] cursor-pointer" onClick={() => handleCopy(item.bookMarkLink)}>
+                    <td
+                      className="p-[12px] text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] cursor-pointer"
+                      onClick={() => handleCopy(item.bookMarkLink)}
+                    >
                       {item.bookMarkLink}
                     </td>
-                    <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] cursor-pointer" onClick={() => handleCopy(item.bookMarkValue)}>
+                    <td
+                      className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#407BFF] cursor-pointer"
+                      onClick={() => handleCopy(item.bookMarkValue)}
+                    >
                       {item.bookMarkValue}
                     </td>
                     {/* <td className="p-[12px]  text-[15px] font-medium leading-[26.63px] text-center text-[#B3B3B3]">
@@ -133,35 +139,13 @@ export default function AllBookMark() {
         onHide={() => {
           setModalShow(false);
         }}
-        updatedAt={
-          allBookMark.length > 0 ? filterList[position].updatedAt : "N/A"
-        }
-        createdAt={
-          allBookMark.length > 0 ? allBookMark[position].createdAt : "N/A"
-        }
-        bookMarkName={allBookMark.data[position].bookMarkName || "N/A"
-        }
-        // bookMarkName={
-        //   allBookMark.length > 0
-        //     ? allBookMark.data[position].bookMarkName
-        //     : "N/A"
-        // }
-        bookMarkDesc={
-          allBookMark.length > 0
-            ? allBookMark.data[position].bookMarkDesc
-            : "N/A"
-        }
-        bookMarkLink={
-          allBookMark.length > 0
-            ? allBookMark.data[position].bookMarkLink
-            : "N/A"
-        }
-        bookMarkValue={
-          allBookMark.length > 0
-            ? allBookMark.data[position].bookMarkValue
-            : "N/A"
-        }
-        _id={allBookMark.length > 0 ? allBookMark.data[position]._id : "N/A"}
+        updatedAt={allBookMark.data[position].updatedAt || "N/A"}
+        createdAt={allBookMark.data[position].createdAt || "N/A"}
+        bookMarkName={allBookMark.data[position].bookMarkName || "N/A"}
+        bookMarkDesc={allBookMark.data[position].bookMarkDesc || "N/A"}
+        bookMarkLink={allBookMark.data[position].bookMarkLink || "N/A"}
+        bookMarkValue={allBookMark.data[position].bookMarkValue || "N/A"}
+        _id={allBookMark.data[position]._id || "N/A"}
       />
     </section>
   );
