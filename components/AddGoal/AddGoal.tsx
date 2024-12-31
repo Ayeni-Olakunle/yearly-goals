@@ -96,14 +96,14 @@ export default function AddGoal() {
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
-                htmlFor="goalName"
+                htmlFor="goalLink"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Goal Link
               </label>
               <input
                 type="url"
-                id="goalName"
+                id="goalLink"
                 {...register("goalLink")}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
               />
@@ -120,15 +120,8 @@ export default function AddGoal() {
                 id="GoalDescription"
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
                 rows={5}
-                {...register("goalDesc", {
-                  required: "Goal Description is required",
-                })}
+                {...register("goalDesc")}
               ></textarea>
-              {errors.goalDesc && (
-                <p className="text-[tomato] text-xs mt-[2px]">
-                  {errors.goalDesc.message}
-                </p>
-              )}
             </div>
             <div className="flex gap-[10px] items-center justify-start">
               <input
