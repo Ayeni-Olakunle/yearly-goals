@@ -66,6 +66,7 @@ export interface addGoals {
     taskName: string;
     taskDesc: string;
     status: string;
+    taskLink: string;
   }
   
   export interface bookMarkProps {

@@ -118,6 +118,7 @@ export default function AllTask() {
           // startDate={filterList[position].createdAt}
           taskName={allTasks.data[position].taskName}
           taskDesc={allTasks.data[position].taskDesc}
+          taskLink={allTasks.data[position].taskLink}
           status={allTasks.data[position].status}
           _id={allTasks.data[position]._id}
         />

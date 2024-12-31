@@ -23,7 +23,7 @@ export default function AddTask() {
           Add Tasks
         </h1>
         <p className=" text-[15px] font-normal leading-[24.2px] text-left text-[#8D8D8D]">
-          Please take your goals very serious
+          Please take your task very serious
         </p>
       </div>
       <form onSubmit={handleSubmit(handleTask)}>
@@ -31,7 +31,7 @@ export default function AddTask() {
           <div>
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
-                htmlFor="GoalName"
+                htmlFor="taskName"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Task Name
@@ -50,21 +50,16 @@ export default function AddTask() {
 
             <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
               <label
-                htmlFor="GoalName"
+                htmlFor="taskLink"
                 className=" text-[15px] font-medium leading-[21.78px] text-left text-[#8D8D8D]"
               >
                 Task Link
               </label>
               <input
                 type="text"
-                {...register("taskName", { required: "Task Link is required" })}
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
+                {...register("taskLink")}
               />
-              {errors.taskLink && (
-                <p className="text-[tomato] text-xs">
-                  {errors.taskLink.message}
-                </p>
-              )}
             </div>
 
             {/* <div className="px-[0] py-[12px] flex justify-start items-start flex-col">
@@ -96,15 +91,8 @@ export default function AddTask() {
               <textarea
                 className="w-full border-[1.5px] border-solid border-[#B3B3B3] mt-[4px] p-[8px] rounded-[5px] text-[gray]"
                 rows={5}
-                {...register("taskDesc", {
-                  required: "Task Description is required",
-                })}
+                {...register("taskDesc")}
               ></textarea>
-              {errors.taskDesc && (
-                <p className="text-[tomato] text-xs">
-                  {errors.taskDesc.message}
-                </p>
-              )}
             </div>
             {/* <div className="flex gap-[10px] items-center justify-start">
               <input type="checkbox" name="" id="" />
@@ -119,7 +107,7 @@ export default function AddTask() {
         </div>
         <div className="flex justify-end items-center mt-5">
           <button className="bg-[#407BFF] text-[white] px-[40px] py-[12px] rounded-[3px]">
-            Submit
+            {addTaskMutation.isPending ? "Please wait..." : "Submit"}
           </button>
         </div>
       </form>

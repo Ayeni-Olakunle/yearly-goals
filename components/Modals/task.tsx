@@ -8,6 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 interface taskDetail {
   taskName: string;
+  taskLink: string;
   taskDesc: string;
   status: string;
   _id: string;
@@ -60,17 +61,21 @@ export default function TasksModal(props: taskDetail) {
                 <input
                   type="text"
                   defaultValue={props.taskName}
-                  {...register("taskName", {
-                    required: "Task Name is required",
-                  })}
+                  {...register("taskName")}
                   className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
                 />
-                {errors.taskName && (
-                  <p className="text-[tomato] text-xs">
-                    {errors.taskName.message}
-                    {}
-                  </p>
-                )}
+              </div>
+
+              <div className="flex justify-start items-start flex-col px-[0] py-[10px]">
+                <label htmlFor="taskLink" className="text-[15px] text-[gray]">
+                  Task Link
+                </label>
+                <input
+                  type="text"
+                  defaultValue={props.taskLink}
+                  {...register("taskLink")}
+                  className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
+                />
               </div>
 
               <div className="flex justify-start items-start flex-col px-[0] py-[10px]">
@@ -101,26 +106,15 @@ export default function TasksModal(props: taskDetail) {
               </div>
 
               <div className="flex justify-start items-start flex-col px-[0] py-[10px]">
-                <label
-                  htmlFor="Goals Details"
-                  className="text-[15px] text-[gray]"
-                >
+                <label htmlFor="taskDesc" className="text-[15px] text-[gray]">
                   Task Details
                 </label>
                 <textarea
                   defaultValue={props.taskDesc}
                   rows={5}
-                  {...register("status", {
-                    required: "Task Detail is required",
-                  })}
+                  {...register("taskDesc")}
                   className="w-full border-[1.5px] border-solid border-[#d1d1d1] p-[9px] rounded-[5px] outline-none text-[gray]"
                 ></textarea>
-                {errors.taskDesc && (
-                  <p className="text-[tomato] text-xs">
-                    {errors.taskDesc.message}
-                    {}
-                  </p>
-                )}
               </div>
 
               {/* <div className="flex justify-start items-start flex-col px-[0] py-[10px]">
@@ -161,8 +155,9 @@ export default function TasksModal(props: taskDetail) {
                 <button
                   className="bg-[#407bff] text-[white] px-[25px] py-[10px] rounded-[5px]"
                   type="submit"
+                  disabled={editTask.isPending}
                 >
-                  Save Changes
+                  {editTask.isPending ? "Please wait..." : "Save Changes"}
                 </button>
               </div>
             </form>
